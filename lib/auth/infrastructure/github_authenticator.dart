@@ -7,7 +7,18 @@ class GithubAuthenticator {
 
   GithubAuthenticator(this._credentialStorage);
 
-  
+  static final authorizationEndpoint =
+      Uri.parse('https://github.com/login/oauth/authorize');
+  //TODO: Pass Your Callback Url Here
+  static final redirectEndpoint = Uri.parse('pass_your_call_back_url_here');
+  //TODO: Pass Scopes Here As Per Your Requirement
+  static final scope = ['read:user', 'repo'];
+  static final tokenEndpoint =
+      Uri.parse('https://github.com/login/oauth/access_token');
+  //TODO: Pass Your Client Id Here
+  static const clientId = 'pass_your_client_id_here';
+  //TODO: Pass Your Client Secret Here
+  static const clientSecret = 'pass_your_client_secret_here';
 
   Future<Credentials?> getSignedInCredentials() async {
     try {
