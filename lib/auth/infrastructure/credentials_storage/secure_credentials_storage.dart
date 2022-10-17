@@ -1,7 +1,7 @@
-import 'dart:html';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:gitviewer/auth/infrastructure/credentials_storage/credentials_storage.dart';
+// ignore: implementation_imports
 import 'package:oauth2/src/credentials.dart';
 
 class SecureCredentialsStorage implements CredentialStorage {
