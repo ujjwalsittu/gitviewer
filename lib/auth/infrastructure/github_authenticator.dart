@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:oauth2/oauth2.dart';
 import 'package:gitviewer/auth/domain/auth_failure.dart';
 import 'package:gitviewer/auth/infrastructure/credentials_storage/credentials_storage.dart';
@@ -26,16 +27,15 @@ class GithubAuthenticator {
 
   GithubAuthenticator(this._credentialsStorage, this._dio);
 
-  static const clientId = '422249753fb132543eff';
-  static const clientSecret = '0559c45a67831e2cc340660c5f0f9ee688708e38';
-  static const scopes = ['read:user', 'repo'];
   static final authorizationEndpoint =
-      Uri.parse('https://github.com/login/oauth/authorize');
-  static final tokenEndpoint =
-      Uri.parse('https://github.com/login/oauth/access_token');
+      Uri.parse(dotenv.env['GITHUB_AUTHORIZATION_ENDPOINT']!);
+  static final redirectUrl = Uri.parse(dotenv.env['GITHUB_REDIRECT_ENDPOINT']!);
+  static final scopes = ['read:user', 'repo'];
+  static final tokenEndpoint = Uri.parse(dotenv.env['GITHUB_TOKEN_ENDPOINT']!);
+  static final clientId = dotenv.env['GITHUB_CLIENT_ID']!;
+  static final clientSecret = dotenv.env['GITHUB_CLIENT_SECRET']!;
   static final revocationEndpoint =
-      Uri.parse('https://api.github.com/applications/$clientId/token');
-  static final redirectUrl = Uri.parse('http://localhost:3000/callback');
+      Uri.parse(dotenv.env['GITHUB_REVOCATION_ENDPOINT']!);
 
   Future<Credentials?> getSignedInCredentials() async {
     try {
