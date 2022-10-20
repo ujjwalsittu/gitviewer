@@ -1,5 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:repo_viewer/search/infrastructure/search_history_repository.dart';
+import 'package:gitviewer/search/infrastructure/search_history_repository.dart';
 
 class SearchHistoryNotifier extends StateNotifier<AsyncValue<List<String>>> {
   final SearchHistoryRepository _repository;
