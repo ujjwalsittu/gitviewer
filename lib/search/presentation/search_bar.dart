@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 
-import 'package:repo_viewer/search/shared/providers.dart';
+import 'package:gitviewer/search/shared/providers.dart';
 
 class SearchBar extends StatefulWidget {
   final Widget body;

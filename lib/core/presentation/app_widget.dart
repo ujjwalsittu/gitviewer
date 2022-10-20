@@ -35,7 +35,7 @@ class AppWidget extends ConsumerWidget {
     return ProviderListener(
       provider: initializationProvider,
       onChange: (context, value) {},
-      child: ProviderListener<AuthState>(
+      // child: ProviderListener<AuthState>(
         provider: authNotifierProvider,
         onChange: (context, state) {
           state.maybeMap(
