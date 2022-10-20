@@ -1,10 +1,8 @@
-
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:gitviewer/auth/infrastructure/credentials_storage/credentials_storage.dart';
-// ignore: implementation_imports
 import 'package:oauth2/src/credentials.dart';
+import 'package:gitviewer/auth/infrastructure/credentials_storage/credentials_storage.dart';
 
-class SecureCredentialsStorage implements CredentialStorage {
+class SecureCredentialsStorage implements CredentialsStorage {
   final FlutterSecureStorage _storage;
 
   SecureCredentialsStorage(this._storage);
@@ -12,12 +10,12 @@ class SecureCredentialsStorage implements CredentialStorage {
   static const _key = 'oauth2_credentials';
 
   Credentials? _cachedCredentials;
+
   @override
   Future<Credentials?> read() async {
     if (_cachedCredentials != null) {
       return _cachedCredentials;
     }
-
     final json = await _storage.read(key: _key);
     if (json == null) {
       return null;
